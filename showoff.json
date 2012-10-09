@@ -3,6 +3,9 @@
   "description": "",
   "sections": [
     {"section":"overview"},
+    {"section":"spring-mvc-test-framework"},
+    {"section":"spring-mvc-test-server"},
+    {"section":"spring-mvc-test-client"},
     {"section":"end"}
   ]
 }
