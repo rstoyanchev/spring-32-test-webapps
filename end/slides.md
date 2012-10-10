@@ -1,6 +1,6 @@
 
 !SLIDE subsection bullets
 # Thanks! Questions?
-* our info
-* @sam_brannen, @rstoya05
+* Our info
+* [@sam_brannen](http://twitter.com/sam_brannen), [@rstoya05](http://twitter.com/rstoya05)
 

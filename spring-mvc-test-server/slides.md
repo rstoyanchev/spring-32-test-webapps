@@ -117,8 +117,8 @@
 !SLIDE small bullets incremental
 # Option 2: "Standalone"
 * Simply register one or more `@Controller` instances
-* Effect similar to MVC Java Config
-* No Spring config loaded
+* Config similar to MVC Java Config
+* No Spring context is actually loaded
 * "Stub" `WebApplicationContext` used to configure `DispatcherServlet`
 
 !SLIDE smaller
@@ -136,15 +136,14 @@
 !SLIDE small bullets incremental
 # `@WebAppConfiguration` vs. "Standalone"
 * "Standalone" more targetted<br> one controller at a time, explicit config
-* `@WebAppConfiguration` also tests application config
-* No right or wrong, different testing styles
-* May mix and match
+* `@WebAppConfiguration` verifies application config
+* No right or wrong choice, different test styles
+* May also mix and match
 
 !SLIDE small bullets incremental
 # Performing Requests
 * Specify HTTP method and URI at a minimum
-* Additional builder-style methods
-* Corresponding to `MockHttpServletRequest` fields
+* Additional builder-style methods corresponding to `MockHttpServletRequest` fields
 
 !SLIDE smaller
 # Request Examples
@@ -173,8 +172,8 @@
 # Default Request Properties
 * Performed requests are often similar
 * Same header, parameter, cookie
-* Define default request when setting up `MockMvc`
-* Performed request overrides defaults!
+* Specify default request when setting up `MockMvc`
+* Performed requests override defaults!
 
 !SLIDE smaller
 # Default Request Example
@@ -188,14 +187,14 @@
 # Defining Expectations
 * Simply add one or more `.andExpect(..)`
 * After the call to `perform(..)`
-* `MockMvcResultMatchers` provides many options
+* `MockMvcResultMatchers` provides many choices
 
 !SLIDE small bullets incremental
 # What Can Be Verified
 * Response status, headers, content
 * But also Spring MVC specific information
 * Flash attrs, handler, model content, etc
-* See [sample tests](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/standalone/resultmatchers) for examples
+* See lots of [sample tests](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/standalone/resultmatchers) for examples
 
 !SLIDE small bullets incremental
 # JSON and XML Content
@@ -227,11 +226,15 @@
 !SLIDE small bullets incremental
 # Filters
 * Filters may be added when setting up `MockMvc`
-* They will be executed when requests are peformed
-* Spring Security is a major use case
-* See [sample tests](https://github.com/SpringSource/spring-framework/blob/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/context/SpringSecurityTests.java)
+* Executed as requests get peformed
+* Various possible use case
+* See `Spring Security` [sample tests](https://github.com/SpringSource/spring-framework/blob/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/context/SpringSecurityTests.java)
 
-
-
+!SLIDE small bullets incremental
+# [HtmlUnit Integration](https://github.com/rwinch/spring-test-mvc-htmlunit)
+* Adapts `HtmlUnit` request-response to `MockHttpServletRequest/Response`
+* Enables use of `Selenium` and `Geb Spock` on top
+* No running server
+* Give it a try, feedback welcome!
 
 
