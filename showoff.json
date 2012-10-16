@@ -2,10 +2,15 @@
   "name": "Testing Web Applications with Spring Framework 3.2",
   "description": "",
   "sections": [
-    {"section":"overview"},
-    {"section":"spring-mvc-test-framework"},
-    {"section":"spring-mvc-test-server"},
-    {"section":"spring-mvc-test-client"},
-    {"section":"end"}
+    {"section": "overview"},
+    {"section": "tcf-overview"},
+    {"section": "tcf-web-support"},
+    {"section": "tcf-context-initializers"},
+    {"section": "tcf-context-hierarchies"},
+    {"section": "intermission"},
+    {"section": "spring-mvc-test-framework"},
+    {"section": "spring-mvc-test-server"},
+    {"section": "spring-mvc-test-client"},
+    {"section": "end"}
   ]
 }

@@ -1,4 +1,3 @@
-
 #preso, .slide {
 /*
   width: 1280px;
@@ -20,10 +19,9 @@ h1, h2 {
 
 .content {
   color: #535353;
-	font-family: "Arial", sans-serif;
+  font-family: verdana, helvetica, arial, sans-serif;
 }
 
 a, a:hover, a:visited {
   color: blue;
 }
-
