@@ -358,14 +358,36 @@
 
 !SLIDE incremental small
 # Generic Factory Methods
-* Generic return types are now inferred
 * Not specific to testing
 * But often used for mocking Spring beans
+* Generic return types are now inferred
+* Custom solutions are now obsolete:
+  * `MockitoFactoryBean`
+  * `EasyMockFactoryBean`
 
-!SLIDE small transition=fade
-# Example: Mocking with Mockito
+!SLIDE smaller
+# EasyMock.createMock() Signature
+	@@@ java
+	
+	
+	
+	
+	public static <T> T createMock(Class<T> toMock) {...}
+
+!SLIDE smaller
+# Example: Mocking with EasyMock
 	@@@ xml
-	<!-- ??? -->
+	<beans ...>
+	
+		<!-- OrderService is autowired with OrderRepository -->
+		<context:component-scan base-package="com.example"/>
+	
+		<bean id="orderRepository" class="org.easymock.EasyMock"
+			factory-method="createMock"
+			c:_="com.example.repository.OrderRepository" />
+	
+	</beans>
+
 
 !SLIDE incremental
 # Spring Environment Mocks
