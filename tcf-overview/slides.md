@@ -276,7 +276,7 @@
   * `TransactionalTestExecutionListener`
 
 !SLIDE center small transition=fade
-# `TestExecutionListener`
+# `TestExecutionListener` 2.5
 ![Testing-TEL-CD-2.5.png](Testing-TEL-CD-2.5.png)
 
 !SLIDE incremental
@@ -355,6 +355,12 @@
 
 !SLIDE bullets center
 * `ApplicationContextInitializer`
+
+!SLIDE bullets center
+* Planned support for...
+
+!SLIDE bullets center
+* context hierarchies
 
 !SLIDE incremental small
 # Generic Factory Methods
