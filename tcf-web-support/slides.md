@@ -18,7 +18,8 @@
 !SLIDE incremental small
 # `@WebAppConfiguration`
 * Denotes that the `ApplicationContext` should be a `WebApplicationContext`
-* Configures the base resource path for the web app
+* Configures the resource path for the web app
+  * for the `MockServletContext`
 * Paths are file-system folders, relative to the project root
   * not classpath resources
 * Defaults to `"src/main/webapp"`
@@ -35,7 +36,9 @@
 !SLIDE smaller
 # Example: @WebAppConfiguration
 	@@@ java
-	@WebAppConfiguration("file:src/test/resources/web")
+	// file system resource
+	@WebAppConfiguration("src/test/resources/web")
+	// classpath resource
 	@ContextConfiguration("/test-web-config.xml")
 	public class WacTests {
 		//...
@@ -57,9 +60,9 @@
 # `WebTestExecutionListener`
 * Sets up default thread-local state via `RequestContextHolder` before each test method
 * Creates:
-  * MockHttpServletRequest
-  * MockHttpServletResponse
-  * ServletWebRequest
+  * `MockHttpServletRequest`
+  * `MockHttpServletResponse`
+  * `ServletWebRequest`
 * Ensures that the `MockHttpServletResponse` and `ServletWebRequest` can be injected into the test instance
 * Cleans up thread-local state after each test method
 
