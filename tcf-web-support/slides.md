@@ -19,10 +19,11 @@
 # `@WebAppConfiguration`
 * Denotes that the `ApplicationContext` should be a `WebApplicationContext`
 * Configures the resource path for the web app
-  * for the `MockServletContext`
+  * used in the `MockServletContext`
 * Paths are file-system folders, relative to the project root
   * not classpath resources
 * Defaults to `"src/main/webapp"`
+* The `classpath:` prefix is also supported
 
 !SLIDE smaller
 # Example: @WebAppConfiguration
@@ -38,6 +39,17 @@
 	@@@ java
 	// file system resource
 	@WebAppConfiguration("src/test/resources/web")
+	// classpath resource
+	@ContextConfiguration("/test-web-config.xml")
+	public class WacTests {
+		//...
+	}
+
+!SLIDE smaller
+# Example: @WebAppConfiguration
+	@@@ java
+	// classpath resource
+	@WebAppConfiguration("classpath:test-web-resources")
 	// classpath resource
 	@ContextConfiguration("/test-web-config.xml")
 	public class WacTests {
@@ -74,12 +86,6 @@
 # `TestExecutionListener` 3.2
 ![Testing-TEL-CD-3.2.png](Testing-TEL-CD-3.2.png)
 
-!SLIDE incremental small
-# `WebMergedContextConfiguration`
-* Extension of `MergedContextConfiguration`
-* Supports the `baseResourcePath` from `@WebAppConfiguration`
-  * which is included in the _context cache key_
-
 !SLIDE smaller
 # Example: Injecting Mocks
 	@@@ java
@@ -101,6 +107,12 @@
 		
 		//...
 	}
+
+!SLIDE incremental small
+# `WebMergedContextConfiguration`
+* Extension of `MergedContextConfiguration`
+* Supports the `baseResourcePath` from `@WebAppConfiguration`
+  * which is included in the _context cache key_
 
 !SLIDE subsection
 # Request and Session Scoped Beans
