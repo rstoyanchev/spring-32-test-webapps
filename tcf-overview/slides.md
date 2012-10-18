@@ -23,45 +23,25 @@
 * JUnit & TestNG
 
 !SLIDE incremental small
-# Spring & Unit Testing
-* POJO-based programming model
-* Program to interfaces
-* IoC / Dependency Injection
-* Out-of-container testability
-* Testing mocks/stubs for various APIs: Servlet,  Portlet, JNDI
-* General purpose testing utilities
-  * `ReflectionTestUtils`
-  * `ModelAndViewAssert`
-
-!SLIDE incremental small
 # Spring & Integration Testing
 * `ApplicationContext` management & caching
 * Dependency injection of test instances
 * Transactional test management
   * with default rollback semantics
-* `JdbcTestUtils` (`SimpleJdbcTestUtils`)
+* `JdbcTestUtils` (-`SimpleJdbcTestUtils`-)
 
 !SLIDE incremental smaller
 # Spring Test Annotations
 * Application Contexts
   * `@ContextConfiguration`, `@DirtiesContext`
-* `@TestExecutionListeners`
 * Dependency Injection
-  * `@Autowired`, `@Qualifier`, `@Inject`, ...
+  * `@Autowired`
 * Transactions
-  * `@Transactional`, `@TransactionConfiguration`, `@Rollback`, `@BeforeTransaction`, `@AfterTransaction`
+  * `@Transactional`, `@TransactionConfiguration`, `@BeforeTransaction`
 * Web
   * `@WebAppConfiguration`
 
-!SLIDE incremental
-# Spring JUnit Annotations
-* Testing Profiles
-  * _test groups, not bean definition profiles_
-  * `@IfProfileValue`, `@ProfileValueSourceConfiguration`
-* JUnit extensions
-  * `@Timed`, `@Repeat`
-
-!SLIDE incremental
+!SLIDE incremental small
 # Using the TestContext Framework
 * Use the `SpringJUnit4ClassRunner` for __JUnit__ 4.5+
 * Instrument test class with `TestContextManager` for __TestNG__
@@ -259,45 +239,27 @@
 # `TestContext`
 * Tracks context for current test
 * Delegates to a `ContextLoader`
-* Caches `ApplicationContext`
+* Caches the `ApplicationContext`
 
 !SLIDE incremental
 # `TestContextManager`
 * Manages the `TestContext`
 * Signals events to listeners
 
-!SLIDE incremental small
+!SLIDE incremental
 # `TestExecutionListener` SPI
 * Reacts to test execution events
-  * Receives reference to current `TestContext`
-* Out of the box (_since 2.5_):
-  * `DependencyInjectionTestExecutionListener`
-  * `DirtiesContextTestExecutionListener`
-  * `TransactionalTestExecutionListener`
+* Receives reference to current `TestContext`
 
 !SLIDE center small transition=fade
 # `TestExecutionListener` 2.5
 ![Testing-TEL-CD-2.5.png](Testing-TEL-CD-2.5.png)
 
 !SLIDE incremental
-# `ContextLoader` SPI
-* Strategy for loading application contexts
-* From resource locations
-
-!SLIDE incremental
 # `SmartContextLoader` SPI
-* Supersedes `ContextLoader`
 * Strategy for loading application contexts
 * From `@Configuration` classes _or_ resource locations
 * Supports environment profiles and context initializers
-
-!SLIDE incremental
-# Implementations
-##_since 3.1_
-* `GenericXmlContextLoader`
-* `GenericPropertiesContextLoader`
-* `AnnotationConfigContextLoader`
-* `DelegatingSmartContextLoader`
 
 !SLIDE center small transition=fade
 # `ContextLoader` 3.1
