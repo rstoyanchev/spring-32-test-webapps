@@ -120,16 +120,97 @@
 		//...
 	}
 
-!SLIDE incremental small
-# `WebMergedContextConfiguration`
-* Extension of `MergedContextConfiguration`
-* Supports the base resource path from `@WebAppConfiguration`
-  * which is included in the _context cache key_
-
 !SLIDE subsection
 # Request and Session Scoped Beans
 
 !SLIDE incremental small
-# ???
-* ???
+# Web Scopes
+* __request__: lifecycle tied to the current `HttpServletRequest`
+* __session__: lifecycle tied to the current `HttpSession`
 
+!SLIDE smaller
+# Example: Request-scoped Bean Config
+	@@@ xml
+	<beans ...>
+	
+		<bean id="userService" class="com.example.SimpleUserService"
+			c:loginAction-ref="loginAction" />
+		
+		<bean id="loginAction" class="com.example.LoginAction"
+		 		c:username="#{request.getParameter('user')}"
+		 		c:password="#{request.getParameter('pswd')}"
+				scope="request">
+			<aop:scoped-proxy />
+		</bean>
+		
+	</beans>
+
+!SLIDE smaller
+# Example: Request-scoped Bean Test
+	@@@ java
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration
+	@WebAppConfiguration
+	public class RequestScopedBeanTests {
+		
+		@Autowired UserService userService;
+		@Autowired MockHttpServletRequest request;
+		
+		@Test
+		public void requestScope() {
+			
+			request.setParameter("user", "enigma");
+			request.setParameter("pswd", "$pr!ng");
+			
+			LoginResults results = userService.loginUser();
+			
+			// assert results
+		}
+	}
+
+!SLIDE smaller
+# Example: Session-scoped Bean Config
+	@@@ xml
+	<beans ...>
+	
+		<bean id="userService" class="com.example.SimpleUserService"
+			c:userPreferences-ref="userPreferences" />
+		
+		<bean id="userPreferences" class="com.example.UserPreferences"
+				c:theme="#{session.getAttribute('theme')}"
+				scope="session">
+			<aop:scoped-proxy />
+		</bean>
+		
+	</beans>
+
+!SLIDE smaller
+# Example: Session-scoped Bean Test
+	@@@ java
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration
+	@WebAppConfiguration
+	public class SessionScopedBeanTests {
+		
+		@Autowired UserService userService;
+		@Autowired MockHttpSession session;
+		
+		@Test
+		public void sessionScope() throws Exception {
+			
+			session.setAttribute("theme", "blue");
+			
+			Results results = userService.processUserPreferences();
+			
+			// assert results
+		}
+	}
+
+
+
+!SLIDE incremental small
+# Application Context Caching
+* `WebMergedContextConfiguration`: new in 3.2
+* Extension of `MergedContextConfiguration`
+* Supports the base resource path from `@WebAppConfiguration`
+  * which is included in the _context cache key_
