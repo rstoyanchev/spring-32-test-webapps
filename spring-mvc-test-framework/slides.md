@@ -2,37 +2,44 @@
 # Spring MVC Test Framework
 
 !SLIDE small incremental bullets
-# Origins of Spring MVC Test
-* Based on [spring-test-mvc](github.com/SpringSource/spring-test-mvc) project on Github
-* Just added to `spring-test` module (Spring 3.2 RC1)
-* Nearly identical code base
-* Github project will continue to support Spring 3.1
+# Background
+* Recently added to `spring-test` as of Spring 3.2 RC1
+* Originates from [spring-test-mvc](github.com/SpringSource/spring-test-mvc) separate project on Github
+* Nearly identical code bases
+* [spring-test-mvc](github.com/SpringSource/spring-test-mvc) will continue to support Spring 3.1
 
 !SLIDE small incremental bullets
 # Differences with [spring-test-mvc](github.com/SpringSource/spring-test-mvc)
-* Depends on Spring 3.2 vs. Spring 3.1
-* Integrated with `@WebAppConfiguration`
-* Provides Servlet 3 async support
+* Dependency on Spring 3.2, not Spring 3.1
+* Support for Spring 3.2 features (e.g. Servlet 3 async)
+* Integration with `@WebAppConfiguration`
 * Different packages
-* Straight-forward to migrate
+* Easy migration from spring-test-mvc to Spring 3.2
 
 !SLIDE small incremental bullets
-# High Level Description
+# What does it provide?
 * 1st class support for testing Spring MVC apps
-* Using a fluent API
+* Fluent API
 * Server-side tests involve the __`DispatcherServlet`__
-* Client-side tests __`RestTemplate`__-based
+* Client-side tests are __`RestTemplate`__-based
 
 !SLIDE small incremental bullets
 # Built on `spring-test`
-* `TestContext` framework for loading Spring config
+* `TestContext` framework used for loading Spring config
 * `MockHttpServletRequest/Response`
 * `MockFilterChain`
 * Servlet container is not used
 
 !SLIDE small incremental bullets
-# Extent of Support
-* HTTP message conversion fully supported<br> e.g. `@RequestBody`/`@ResponseBody`
-* Most rendering technologies as well<br> JSON, XML, Freemarker/Velocity, Thyme, etc
-* No JSP rendering and redirects<br> Assert selected JSP view or redirected URL
+# Extent of support
+* Pretty much everything should work as it does at runtime 
+* HTTP message conversion<br> e.g. `@RequestBody`/`@ResponseBody`
+* Most rendering technologies<br> JSON, XML, Freemarker/Velocity, Thymeleaf, Excel, etc
+
+!SLIDE small incremental bullets
+# Limitations
+
+* We are not in a servlet container
+* Foward and redirect not executed
+* No JSP rendering
 
