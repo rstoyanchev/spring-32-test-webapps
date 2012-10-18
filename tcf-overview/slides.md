@@ -365,20 +365,8 @@
 !SLIDE incremental small
 # Generic Factory Methods
 * Not specific to testing
+* Sometimes used for creating a proxy
 * But often used for mocking Spring beans
-* Generic return types are now inferred
-* Custom solutions are now obsolete:
-  * `MockitoFactoryBean`
-  * `EasyMockFactoryBean`
-
-!SLIDE smaller
-# EasyMock.createMock() Signature
-	@@@ java
-	
-	
-	
-	
-	public static <T> T createMock(Class<T> toMock) {...}
 
 !SLIDE smaller
 # Example: Mocking with EasyMock
@@ -394,6 +382,25 @@
 	
 	</beans>
 
+!SLIDE smaller
+# EasyMock.createMock() Signature
+	@@@ java
+	
+	
+	
+	
+	public static <T> T createMock(Class<T> toMock) {...}
+
+!SLIDE incremental small
+# Generic Factory Methods - Improved
+* Generic return types are now inferred
+  * `public static <T> T mock(Class<T> clazz)`
+  * `public static <T> T proxy(T obj)`
+* Autowiring _by type_ now works
+* And custom solutions are now chiefly unnecessary:
+  * `MockitoFactoryBean`
+  * `EasyMockFactoryBean`
+  * [Springockito](https://bitbucket.org/kubek2k/springockito/wiki/Home)
 
 !SLIDE incremental
 # Spring Environment Mocks
@@ -411,14 +418,14 @@
 
 !SLIDE incremental
 # Enhanced Servlet API Mocks
-  * `MockServletContext`
-  * `MockHttpSession`
-  * `MockFilterChain`
-  * `MockRequestDispatcher`
-  * ...
+* `MockServletContext`
+* `MockHttpSession`
+* `MockFilterChain`
+* `MockRequestDispatcher`
+* ...
 
 !SLIDE incremental
-# Tx Manager Config
+# Transaction Manager Config
 * support for single, _unqualified_ transaction manager
 * support for `TransactionManagementConfigurer`
 * `@TransactionConfiguration` is now rarely necessary
