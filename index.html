@@ -1230,13 +1230,13 @@ public class RestWebServiceTests extends AbstractWebTests {}</code></pre>
 <h1>Spring MVC Test Framework</h1>
 </div>
 </div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/2">
-<h1>Origins of Spring MVC Test</h1>
+<h1>Background</h1>
 
 <ul>
-<li>Based on <a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a> project on Github</li>
-<li>Just added to <code>spring-test</code> module (Spring 3.2 RC1)</li>
-<li>Nearly identical code base</li>
-<li>Github project will continue to support Spring 3.1</li>
+<li>Recently added to <code>spring-test</code> as of Spring 3.2 RC1</li>
+<li>Originates from <a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a> separate project on Github</li>
+<li>Nearly identical code bases</li>
+<li><a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a> will continue to support Spring 3.1</li>
 </ul>
 
 </div>
@@ -1244,22 +1244,22 @@ public class RestWebServiceTests extends AbstractWebTests {}</code></pre>
 <h1>Differences with <a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a></h1>
 
 <ul>
-<li>Depends on Spring 3.2 vs. Spring 3.1</li>
-<li>Integrated with <code>@WebAppConfiguration</code></li>
-<li>Provides Servlet 3 async support</li>
+<li>Dependency on Spring 3.2, not Spring 3.1</li>
+<li>Support for Spring 3.2 features (e.g. Servlet 3 async)</li>
+<li>Integration with <code>@WebAppConfiguration</code></li>
 <li>Different packages</li>
-<li>Straight-forward to migrate</li>
+<li>Easy migration from spring-test-mvc to Spring 3.2</li>
 </ul>
 
 </div>
 </div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/4">
-<h1>High Level Description</h1>
+<h1>What does it provide?</h1>
 
 <ul>
 <li>1st class support for testing Spring MVC apps</li>
-<li>Using a fluent API</li>
+<li>Fluent API</li>
 <li>Server-side tests involve the <strong><code>DispatcherServlet</code></strong></li>
-<li>Client-side tests <strong><code>RestTemplate</code></strong>-based</li>
+<li>Client-side tests are <strong><code>RestTemplate</code></strong>-based</li>
 </ul>
 
 </div>
@@ -1267,7 +1267,7 @@ public class RestWebServiceTests extends AbstractWebTests {}</code></pre>
 <h1>Built on <code>spring-test</code></h1>
 
 <ul>
-<li><code>TestContext</code> framework for loading Spring config</li>
+<li><code>TestContext</code> framework used for loading Spring config</li>
 <li><code>MockHttpServletRequest/Response</code></li>
 <li><code>MockFilterChain</code></li>
 <li>Servlet container is not used</li>
@@ -1276,17 +1276,27 @@ public class RestWebServiceTests extends AbstractWebTests {}</code></pre>
 </div>
 </div><div class="slide" data-transition="none">
   <div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/6">
-<h1>Extent of Support</h1>
+<h1>Extent of support</h1>
 
 <ul>
-<li>HTTP message conversion fully supported<br> e.g. <code>@RequestBody</code>/<code>@ResponseBody</code></br>
-<li>Most rendering technologies as well<br> JSON, XML, Freemarker/Velocity, Thyme, etc</br>
-<li>No JSP rendering and redirects<br> Assert selected JSP view or redirected URL</br>
+<li>Pretty much everything should work as it does at runtime</li>
+<li>HTTP message conversion<br> e.g. <code>@RequestBody</code>/<code>@ResponseBody</code></br>
+<li>Most rendering technologies<br> JSON, XML, Freemarker/Velocity, Thymeleaf, Excel, etc</br>
 </li>
 
 </li>
-</li>
-</ul></div>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/7">
+<h1>Limitations</h1>
+
+<ul>
+<li>We are not in a servlet container</li>
+<li>Foward and redirect not executed</li>
+<li>No JSP rendering</li>
+</ul>
+
+</div>
 </div><div class="slide" data-transition="none"><div class="content subsection" ref="spring-mvc-test-server/slides/1">
 <h1>Server-side<br> Spring MVC Tests</br>
 </h1>
