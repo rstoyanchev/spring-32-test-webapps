@@ -120,6 +120,17 @@
 		//...
 	}
 
+
+!SLIDE subsection
+# Web Application Context Caching
+
+!SLIDE incremental small
+# `WebMergedContextConfiguration`
+* Extension of `MergedContextConfiguration`
+* Supports the base resource path from `@WebAppConfiguration`
+  * which is now part of the _context cache key_
+
+
 !SLIDE subsection
 # Request and Session Scoped Beans
 
@@ -206,10 +217,3 @@
 		}
 	}
 
-
-!SLIDE incremental small
-# Web Application Context Caching
-* Made possible by `WebMergedContextConfiguration`
-* Extension of `MergedContextConfiguration`
-* Supports the base resource path from `@WebAppConfiguration`
-  * which is now part of the _context cache key_
