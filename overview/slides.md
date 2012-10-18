@@ -1,11 +1,11 @@
 !SLIDE subsection
-# Testing Web Apps with Spring Framework 3.2
+# Testing Web Apps with<br />Spring Framework 3.2
 <br />
 ## Sam Brannen
 ### _Swiftmind_
 <br />
 ## Rossen Stoyanchev
-### _SpringSource, VMware_
+### _VMware_
 
 !SLIDE small incremental
 # __Sam Brannen__
@@ -26,7 +26,7 @@
 * Spring Web course author
 * NYC area
 
-!SLIDE subsection incremental
+!SLIDE subsection bullets incremental
 # Themes
 * _New testing features in the Spring Framework_
 * _Spring MVC Test (`spring-test-mvc`)_
@@ -37,9 +37,9 @@
 * Web Application Contexts
 * Context Initializers
 * Context Hierarchies
-* Spring MVC Test - Core
-* Spring MVC Test - Server
-* Spring MVC Test - Client
+* Spring MVC Test Framework
+* Server-side Spring MVC Tests
+* Client-side `RestTemplate` Tests
 * Q&A
 
 !SLIDE incremental
@@ -48,5 +48,4 @@
 * Spring 2.5 / 3.0 / 3.1 / 3.2
 * Integration testing with Spring
 * Spring TestContext Framework
-* Spring MVC
-* Spring MVC Test
+* Spring MVC / Test
