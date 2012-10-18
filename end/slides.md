@@ -17,7 +17,6 @@
 * __Reference Manual__: [Spring 3.2.x](http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/)
 * __Forums__: [forum.springframework.org](http://forum.springframework.org)
 * __JIRA__: [jira.springsource.org](https://jira.springsource.org)
-* __[Spring in a Nutshell](http://shop.oreilly.com/product/9780596801946.do)__ … _available in 2013_ ?
 
 !SLIDE subsection
 # Q&A
