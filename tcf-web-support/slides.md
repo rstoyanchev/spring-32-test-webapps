@@ -10,7 +10,7 @@
 # Loading a `WebApplicationContext`
 
 !SLIDE bullets center
-* How do you tell Spring to load a `WebApplicationContext`?
+* How do you tell the TestContext framework<br> to load a `WebApplicationContext`?
 
 !SLIDE bullets center
 * Just annotate your test class with ...

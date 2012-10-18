@@ -20,11 +20,11 @@
 !SLIDE small incremental
 # __Rossen Stoyanchev__
 ##@rstoya05
-* Staff Engineer SpringSource, VMware
-* Spring MVC, Spring Web Flow committer
-* Teach and consult, Spring Projects
-* Spring Web course author
-* NYC area
+* Staff Engineer, VMware
+* Spring Framework Commiter
+* Focus on Web development
+* Spring MVC, Spring Web Flow
+* Teaching and consulting
 
 !SLIDE subsection bullets incremental
 # Themes

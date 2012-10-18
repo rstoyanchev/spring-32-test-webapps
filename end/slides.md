@@ -1,15 +1,17 @@
 !SLIDE subsection
 # In Closing ...
 
-!SLIDE incremental smaller
-# This Presentation
-* __Source__:<br />[github.com/rstoyanchev/spring-32-test-webapps](https://github.com/rstoyanchev/spring-32-test-webapps)
-* __Slides__:<br />???
-
 !SLIDE smaller
+# Presentation Source
+
+## [https://github.com/rstoyanchev/spring-32-test-webapps](https://github.com/rstoyanchev/spring-32-test-webapps)
+
+!SLIDE incremental small
 # Resources for Spring MVC Test
-* __Project Home__:<br />???
-* __Sample Tests__:<br />???
+<br><br>
+* [Spring MVC Showcase](https://github.com/SpringSource/spring-mvc-showcase/tree/master/src/test/java/org/springframework/samples/mvc) tests
+* Sample [client](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/client/samples) and [server](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples) tests in the Spring Framework 
+* Reference documentation will be added in 3.2 RC2
 
 !SLIDE incremental small
 # Resources for Core Spring
