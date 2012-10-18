@@ -1,7 +1,7 @@
 !SLIDE subsection
 # Web Testing Support in the TestContext Framework
 
-!SLIDE incremental small
+!SLIDE bullets incremental small
 # New Web Testing Features
 * First-class `WebApplicationContext` support
 * `Request` and `Session` scoped beans
@@ -207,10 +207,9 @@
 	}
 
 
-
 !SLIDE incremental small
-# Application Context Caching
-* `WebMergedContextConfiguration`: new in 3.2
+# Web Application Context Caching
+* Made possible by `WebMergedContextConfiguration`
 * Extension of `MergedContextConfiguration`
 * Supports the base resource path from `@WebAppConfiguration`
-  * which is included in the _context cache key_
+  * which is now part of the _context cache key_
