@@ -20,9 +20,9 @@
 * Denotes that the `ApplicationContext` should be a `WebApplicationContext`
 * Configures the resource path for the web app
   * used in the `MockServletContext`
+* Defaults to `"src/main/webapp"`
 * Paths are file-system folders, relative to the project root
   * not classpath resources
-* Defaults to `"src/main/webapp"`
 * The `classpath:` prefix is also supported
 
 !SLIDE smaller
@@ -43,10 +43,13 @@
 !SLIDE smaller
 # Example: @WebAppConfiguration
 	@@@ java
+	
 	// file system resource
 	@WebAppConfiguration("webapp")
+	
 	// classpath resource
 	@ContextConfiguration("/spring/test-servlet-config.xml")
+	
 	public class WacTests {
 		//...
 	}
@@ -54,10 +57,13 @@
 !SLIDE smaller
 # Example: @WebAppConfiguration
 	@@@ java
+	
 	// classpath resource
 	@WebAppConfiguration("classpath:test-web-resources")
+	
 	// file system resource
 	@ContextConfiguration("file:src/main/webapp/WEB-INF/servlet-config.xml")
+	
 	public class WacTests {
 		//...
 	}
