@@ -1,5 +1,5 @@
 !SLIDE subsection
-# Web Testing Support in the TCF
+# Web Testing Support in the TestContext Framework
 
 !SLIDE incremental small
 # New Web Testing Features
@@ -28,8 +28,14 @@
 !SLIDE smaller
 # Example: @WebAppConfiguration
 	@@@ java
-	@WebAppConfiguration // defaults to "file:src/main/webapp"
+	
+	// defaults to "file:src/main/webapp"
+	@WebAppConfiguration
+
+	// detects "WacTests-context.xml" in same package
+	// or static nested @Configuration class
 	@ContextConfiguration
+	
 	public class WacTests {
 		//...
 	}
@@ -38,9 +44,9 @@
 # Example: @WebAppConfiguration
 	@@@ java
 	// file system resource
-	@WebAppConfiguration("src/test/resources/web")
+	@WebAppConfiguration("webapp")
 	// classpath resource
-	@ContextConfiguration("/test-web-config.xml")
+	@ContextConfiguration("/spring/test-servlet-config.xml")
 	public class WacTests {
 		//...
 	}
@@ -50,8 +56,8 @@
 	@@@ java
 	// classpath resource
 	@WebAppConfiguration("classpath:test-web-resources")
-	// classpath resource
-	@ContextConfiguration("/test-web-config.xml")
+	// file system resource
+	@ContextConfiguration("file:src/main/webapp/WEB-INF/servlet-config.xml")
 	public class WacTests {
 		//...
 	}
@@ -93,9 +99,9 @@
 	@ContextConfiguration
 	public class WacTests {
 		
-		@Autowired WebApplicationContext wac;
+		@Autowired WebApplicationContext wac; // cached
 		
-		@Autowired MockServletContext servletContext;
+		@Autowired MockServletContext servletContext; // cached
 		
 		@Autowired MockHttpSession session;
 		
@@ -111,7 +117,7 @@
 !SLIDE incremental small
 # `WebMergedContextConfiguration`
 * Extension of `MergedContextConfiguration`
-* Supports the `baseResourcePath` from `@WebAppConfiguration`
+* Supports the base resource path from `@WebAppConfiguration`
   * which is included in the _context cache key_
 
 !SLIDE subsection
