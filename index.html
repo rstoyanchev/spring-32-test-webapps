@@ -1,0 +1,1736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Testing Web Applications with Spring Framework 3.2</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/showoff.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content subsection" ref="overview/slides/1">
+<h1>Testing Web Apps with<br/>Spring Framework 3.2</h1>
+
+<br/>
+
+
+<h2>Sam Brannen</h2>
+
+<h3><em>Swiftmind</em></h3>
+
+<br/>
+
+
+<h2>Rossen Stoyanchev</h2>
+
+<h3><em>VMware</em></h3>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental" ref="overview/slides/2">
+<h1><strong>Sam Brannen</strong></h1>
+
+<h2>@sam_brannen</h2>
+
+<ul>
+<li>Spring and Java Consultant @ Swiftmind</li>
+<li>Developing Java for over 14 years</li>
+<li>Spring Framework Core Committer</li>
+<li>Spring Trainer</li>
+<li>Lead author of <em>Spring in a Nutshell</em></li>
+<li>Presenter on Spring, Java, and testing</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental" ref="overview/slides/3">
+<h1><strong>Rossen Stoyanchev</strong></h1>
+
+<h2>@rstoya05</h2>
+
+<ul>
+<li>Staff Engineer, VMware</li>
+<li>Spring Framework Commiter</li>
+<li>Focus on Web development</li>
+<li>Spring MVC, Spring Web Flow</li>
+<li>Teaching and consulting</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection bullets incremental" ref="overview/slides/4">
+<h1>Themes</h1>
+
+<ul>
+<li><em>New testing features in the Spring Framework</em></li>
+<li><em>Spring MVC Test (<code>spring-test-mvc</code>)</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection incremental smaller" ref="overview/slides/5">
+<h1>Agenda</h1>
+
+<ul>
+<li>Spring TestContext Framework</li>
+<li>Web Application Contexts</li>
+<li>Context Initializers</li>
+<li>Context Hierarchies</li>
+<li>Spring MVC Test Framework</li>
+<li>Server-side Spring MVC Tests</li>
+<li>Client-side <code>RestTemplate</code> Tests</li>
+<li>Q&amp;A</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="overview/slides/6">
+<h1>Show of Hands...</h1>
+
+<ul>
+<li>JUnit / TestNG</li>
+<li>Spring 2.5 / 3.0 / 3.1 / 3.2</li>
+<li>Integration testing with Spring</li>
+<li>Spring TestContext Framework</li>
+<li>Spring MVC / Test</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-overview/slides/1">
+<h1>Spring TestContext Framework</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/2">
+<ul>
+<li>Introduced in Spring 2.5</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/3">
+<ul>
+<li>Revised in Spring 3.2 ...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/4">
+<ul>
+<li>with a focus on web apps</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/5">
+<ul>
+<li>Unit <em>and</em> integration testing</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/6">
+<ul>
+<li>Annotation-driven</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/7">
+<ul>
+<li>Convention over Configuration</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/8">
+<ul>
+<li>JUnit &amp; TestNG</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-overview/slides/9">
+<h1>Spring &amp; Integration Testing</h1>
+
+<ul>
+<li><code>ApplicationContext</code> management &amp; caching</li>
+<li>Dependency injection of test instances</li>
+<li>Transactional test management
+
+<ul>
+<li>with default rollback semantics</li>
+</ul>
+</li>
+<li><code>JdbcTestUtils</code> (-<code>SimpleJdbcTestUtils</code>-)</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental smaller" ref="tcf-overview/slides/10">
+<h1>Spring Test Annotations</h1>
+
+<ul>
+<li>Application Contexts
+
+<ul>
+<li><code>@ContextConfiguration</code>, <code>@DirtiesContext</code></li>
+</ul>
+</li>
+<li>Dependency Injection
+
+<ul>
+<li><code>@Autowired</code></li>
+</ul>
+</li>
+<li>Transactions
+
+<ul>
+<li><code>@Transactional</code>, <code>@TransactionConfiguration</code>, <code>@BeforeTransaction</code></li>
+</ul>
+</li>
+<li>Web
+
+<ul>
+<li><code>@WebAppConfiguration</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-overview/slides/11">
+<h1>Using the TestContext Framework</h1>
+
+<ul>
+<li>Use the <code>SpringJUnit4ClassRunner</code> for <strong>JUnit</strong> 4.5+</li>
+<li>Instrument test class with <code>TestContextManager</code> for <strong>TestNG</strong></li>
+<li>Extend one of the base classes
+
+<ul>
+<li><code>Abstract(Transactional)[JUnit4|TestNG]SpringContextTests</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="fade"><div class="content small" ref="tcf-overview/slides/12">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>
+
+
+
+public class OrderServiceTests {
+
+
+
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/13">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+
+
+
+public class OrderServiceTests {
+
+
+
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/14">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
+
+
+public class OrderServiceTests {
+
+
+
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/15">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration // defaults to
+// OrderServiceTests-context.xml in same package
+
+public class OrderServiceTests {
+
+
+
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/16">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration // defaults to
+// OrderServiceTests-context.xml in same package
+
+public class OrderServiceTests {
+
+  @Autowired
+  private OrderService orderService;
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/17">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration // defaults to
+// OrderServiceTests-context.xml in same package
+@Transactional
+public class OrderServiceTests {
+
+  @Autowired
+  private OrderService orderService;
+
+
+
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/18">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration // defaults to
+// OrderServiceTests-context.xml in same package
+@Transactional
+public class OrderServiceTests {
+
+  @Autowired
+  private OrderService orderService;
+
+  @BeforeTransaction
+  public void verifyInitialDatabaseState() { &#x2026; }
+
+
+
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="tcf-overview/slides/19">
+<h1>Example: @POJO Test Class</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration // defaults to
+// OrderServiceTests-context.xml in same package
+@Transactional
+public class OrderServiceTests {
+
+  @Autowired
+  private OrderService orderService;
+
+  @BeforeTransaction
+  public void verifyInitialDatabaseState() { &#x2026; }
+
+  @Before
+  public void setUpTestDataWithinTransaction() { &#x2026; }
+
+  @Test
+  public void testOrderService() { &#x2026; }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection small" ref="tcf-overview/slides/20">
+<h1>Core Components</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/21">
+<h1><code>TestContext</code></h1>
+
+<ul>
+<li>Tracks context for current test</li>
+<li>Delegates to a <code>ContextLoader</code></li>
+<li>Caches the <code>ApplicationContext</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/22">
+<h1><code>TestContextManager</code></h1>
+
+<ul>
+<li>Manages the <code>TestContext</code></li>
+<li>Signals events to listeners</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/23">
+<h1><code>TestExecutionListener</code> SPI</h1>
+
+<ul>
+<li>Reacts to test execution events</li>
+<li>Receives reference to current <code>TestContext</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="fade"><div class="content center small" ref="tcf-overview/slides/24">
+<h1><code>TestExecutionListener</code> 2.5</h1>
+
+<p><img src="./file/tcf-overview/Testing-TEL-CD-2.5.png" alt="Testing-TEL-CD-2.5.png"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/25">
+<h1><code>SmartContextLoader</code> SPI</h1>
+
+<ul>
+<li>Strategy for loading application contexts</li>
+<li>From <code>@Configuration</code> classes <em>or</em> resource locations</li>
+<li>Supports environment profiles and context initializers</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="fade"><div class="content center small" ref="tcf-overview/slides/26">
+<h1><code>ContextLoader</code> 3.1</h1>
+
+<p><img src="./file/tcf-overview/Testing-ContextLoader-CD-3.1.png" alt="Testing-ContextLoader-CD-3.1.png"/></p>
+</div>
+</div><div class="slide" data-transition="scrollUp"><div class="content center small" ref="tcf-overview/slides/27">
+<h1>Putting it all together</h1>
+
+<p><img src="./file/tcf-overview/Testing-TCF-CoreComponents.png" alt="Testing-TCF-CoreComponents.png"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-overview/slides/28">
+<h1>What's New in 3.2</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/29">
+<ul>
+<li>Upgraded to JUnit 4.10<br/> and TestNG 6.5.2</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/30">
+<ul>
+<li><code>spring-test</code> now depends on <code>junit:junit-dep</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/31">
+<ul>
+<li>Now inferring return type of<br/>generic factory methods</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/32">
+<ul>
+<li>Updated Spring <em>mocks</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/33">
+<ul>
+<li>Simplified transaction manager configuration</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/34">
+<ul>
+<li>Improved JDBC integration<br/>testing support</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/35">
+<ul>
+<li>Documented support for...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/36">
+<ul>
+<li><code>@Bean</code> <em>lite</em> mode</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/37">
+<ul>
+<li>and</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/38">
+<ul>
+<li>JSR-250 lifecycle annotations</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/39">
+<ul>
+<li>Now supporting...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/40">
+<ul>
+<li><code>WebApplicationContext</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/41">
+<ul>
+<li>session &amp; request scoped beans</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/42">
+<ul>
+<li>and</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/43">
+<ul>
+<li><code>ApplicationContextInitializer</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/44">
+<ul>
+<li>Planned support for...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-overview/slides/45">
+<ul>
+<li>context hierarchies</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-overview/slides/46">
+<h1>Generic Factory Methods</h1>
+
+<ul>
+<li>Not specific to testing</li>
+<li>Sometimes used for creating a proxy</li>
+<li>But often used for mocking Spring beans</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-overview/slides/47">
+<h1>Example: Mocking with EasyMock</h1>
+
+<pre class="sh_xml"><code>&lt;beans ...&gt;
+
+    &lt;!-- OrderService is autowired with OrderRepository --&gt;
+    &lt;context:component-scan base-package="com.example"/&gt;
+
+    &lt;bean id="orderRepository" class="org.easymock.EasyMock"
+        factory-method="createMock"
+        c:_="com.example.repository.OrderRepository" /&gt;
+
+&lt;/beans&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-overview/slides/48">
+<h1>EasyMock.createMock() Signature</h1>
+
+<pre class="sh_java"><code>
+
+
+
+public static &lt;T&gt; T createMock(Class&lt;T&gt; toMock) {...}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-overview/slides/49">
+<h1>Generic Factory Methods - Improved</h1>
+
+<ul>
+<li>Generic return types are now inferred
+
+<ul>
+<li><code>public static &lt;T&gt; T mock(Class&lt;T&gt; clazz)</code></li>
+<li><code>public static &lt;T&gt; T proxy(T obj)</code></li>
+</ul>
+</li>
+<li>Autowiring <em>by type</em> now works</li>
+<li>And custom solutions are now chiefly unnecessary:
+
+<ul>
+<li><code>MockitoFactoryBean</code></li>
+<li><code>EasyMockFactoryBean</code></li>
+<li><a href="https://bitbucket.org/kubek2k/springockito/wiki/Home">Springockito</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/50">
+<h1>Spring Environment Mocks</h1>
+
+<ul>
+<li>introduced <code>MockEnvironment</code> in 3.2</li>
+<li>complements <code>MockPropertySource</code> from 3.1</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/51">
+<h1>New Spring HTTP Mocks</h1>
+
+<ul>
+<li>Client:
+
+<ul>
+<li><code>MockClientHttpRequest</code></li>
+<li><code>MockClientHttpResponse</code></li>
+</ul>
+</li>
+<li>Server:
+
+<ul>
+<li><code>MockHttpInputMessage</code></li>
+<li><code>MockHttpOutputMessage</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/52">
+<h1>Enhanced Servlet API Mocks</h1>
+
+<ul>
+<li><code>MockServletContext</code></li>
+<li><code>MockHttpSession</code></li>
+<li><code>MockFilterChain</code></li>
+<li><code>MockRequestDispatcher</code></li>
+<li>...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/53">
+<h1>Transaction Manager Config</h1>
+
+<ul>
+<li>support for single, <em>unqualified</em> transaction manager</li>
+<li>support for <code>TransactionManagementConfigurer</code></li>
+<li><code>@TransactionConfiguration</code> is now rarely necessary</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental smaller" ref="tcf-overview/slides/54">
+<h1>JDBC Testing Support</h1>
+
+<ul>
+<li>deprecated <code>SimpleJdbcTestUtils</code> in favor of <code>JdbcTestUtils</code></li>
+<li>introduced <code>countRowsInTableWhere()</code> and <code>dropTables()</code> in <code>JdbcTestUtils</code></li>
+<li>introduced <code>jdbcTemplate</code>, <code>countRowsInTableWhere()</code>, and <code>dropTables()</code> in
+
+<ul>
+<li><code>AbstractTransactionalJUnit4SpringContextTests</code></li>
+<li><code>AbstractTransactionalTestNGSpringContextTests</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-overview/slides/55">
+<h1>Documentation</h1>
+
+<ul>
+<li>support for <em><code>@Bean</code> lite mode</em> and annotated classes</li>
+<li>support for JSR-250 lifecycle annotations</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-web-support/slides/1">
+<h1>Web Testing Support in the TestContext Framework</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental small" ref="tcf-web-support/slides/2">
+<h1>New Web Testing Features</h1>
+
+<ul>
+<li>First-class <code>WebApplicationContext</code> support</li>
+<li><code>Request</code> and <code>Session</code> scoped beans</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-web-support/slides/3">
+<h1>Loading a <code>WebApplicationContext</code></h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-web-support/slides/4">
+<ul>
+<li>How do you tell the TestContext framework<br> to load a <code>WebApplicationContext</code>?</br>
+</li>
+
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-web-support/slides/5">
+<ul>
+<li>Just annotate your test class with ...</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-web-support/slides/6">
+<h1><code>@WebAppConfiguration</code></h1>
+
+<ul>
+<li>Denotes that the <code>ApplicationContext</code> should be a <code>WebApplicationContext</code></li>
+<li>Configures the resource path for the web app
+
+<ul>
+<li>used in the <code>MockServletContext</code></li>
+</ul>
+</li>
+<li>Defaults to <code>"src/main/webapp"</code></li>
+<li>Paths are file-system folders, relative to the project root
+
+<ul>
+<li>not classpath resources</li>
+</ul>
+</li>
+<li>The <code>classpath:</code> prefix is also supported</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/7">
+<h1>Example: @WebAppConfiguration</h1>
+
+<pre class="sh_java"><code>
+// defaults to "file:src/main/webapp"
+@WebAppConfiguration
+
+// detects "WacTests-context.xml" in same package
+// or static nested @Configuration class
+@ContextConfiguration
+
+public class WacTests {
+    //...
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/8">
+<h1>Example: @WebAppConfiguration</h1>
+
+<pre class="sh_java"><code>
+// file system resource
+@WebAppConfiguration("webapp")
+
+// classpath resource
+@ContextConfiguration("/spring/test-servlet-config.xml")
+
+public class WacTests {
+    //...
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/9">
+<h1>Example: @WebAppConfiguration</h1>
+
+<pre class="sh_java"><code>
+// classpath resource
+@WebAppConfiguration("classpath:test-web-resources")
+
+// file system resource
+@ContextConfiguration("file:src/main/webapp/WEB-INF/servlet-config.xml")
+
+public class WacTests {
+    //...
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-web-support/slides/10">
+<h1>Web Context Loaders</h1>
+
+<ul>
+<li>New <code>AbstractGenericWebContextLoader</code></li>
+<li>And two concrete subclasses:
+
+<ul>
+<li><code>XmlWebContextLoader</code></li>
+<li><code>AnnotationConfigWebContextLoader</code></li>
+</ul>
+</li>
+<li>Plus a <code>WebDelegatingSmartContextLoader</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="fade"><div class="content center small" ref="tcf-web-support/slides/11">
+<h1><code>SmartContextLoader</code> 3.2</h1>
+
+<p><img src="./file/tcf-web-support/SmartContextLoader-Type-Hierarchy.png" alt="SmartContextLoader-Type-Hierarchy.png"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental smaller" ref="tcf-web-support/slides/12">
+<h1><code>WebTestExecutionListener</code></h1>
+
+<ul>
+<li>Sets up default thread-local state via <code>RequestContextHolder</code> before each test method</li>
+<li>Creates:
+
+<ul>
+<li><code>MockHttpServletRequest</code></li>
+<li><code>MockHttpServletResponse</code></li>
+<li><code>ServletWebRequest</code></li>
+</ul>
+</li>
+<li>Ensures that the <code>MockHttpServletResponse</code> and <code>ServletWebRequest</code> can be injected into the test instance</li>
+<li>Cleans up thread-local state after each test method</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content center small" ref="tcf-web-support/slides/13">
+<h1><code>TestExecutionListener</code> 2.5</h1>
+
+<p><img src="./file/tcf-web-support/Testing-TEL-CD-2.5.png" alt="Testing-TEL-CD-2.5.png"/></p>
+</div>
+</div><div class="slide" data-transition="fade"><div class="content center small" ref="tcf-web-support/slides/14">
+<h1><code>TestExecutionListener</code> 3.2</h1>
+
+<p><img src="./file/tcf-web-support/Testing-TEL-CD-3.2.png" alt="Testing-TEL-CD-3.2.png"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/15">
+<h1>Example: Injecting Mocks</h1>
+
+<pre class="sh_java"><code>@WebAppConfiguration
+@ContextConfiguration
+public class WacTests {
+
+    @Autowired WebApplicationContext wac; // cached
+
+    @Autowired MockServletContext servletContext; // cached
+
+    @Autowired MockHttpSession session;
+
+    @Autowired MockHttpServletRequest request;
+
+    @Autowired MockHttpServletResponse response;
+
+    @Autowired ServletWebRequest webRequest;
+
+    //...
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-web-support/slides/16">
+<h1>Web Application Context Caching</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-web-support/slides/17">
+<h1><code>WebMergedContextConfiguration</code></h1>
+
+<ul>
+<li>Extension of <code>MergedContextConfiguration</code></li>
+<li>Supports the base resource path from <code>@WebAppConfiguration</code>
+
+<ul>
+<li>which is now part of the <em>context cache key</em></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-web-support/slides/18">
+<h1>Request and Session Scoped Beans</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-web-support/slides/19">
+<h1>Web Scopes</h1>
+
+<ul>
+<li><strong>request</strong>: lifecycle tied to the current <code>HttpServletRequest</code></li>
+<li><strong>session</strong>: lifecycle tied to the current <code>HttpSession</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/20">
+<h1>Example: Request-scoped Bean Config</h1>
+
+<pre class="sh_xml"><code>&lt;beans ...&gt;
+
+    &lt;bean id="userService" class="com.example.SimpleUserService"
+        c:loginAction-ref="loginAction" /&gt;
+
+    &lt;bean id="loginAction" class="com.example.LoginAction"
+            c:username="#{request.getParameter('user')}"
+            c:password="#{request.getParameter('pswd')}"
+            scope="request"&gt;
+        &lt;aop:scoped-proxy /&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/21">
+<h1>Example: Request-scoped Bean Test</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
+@WebAppConfiguration
+public class RequestScopedBeanTests {
+
+    @Autowired UserService userService;
+    @Autowired MockHttpServletRequest request;
+
+    @Test
+    public void requestScope() {
+
+        request.setParameter("user", "enigma");
+        request.setParameter("pswd", "$pr!ng");
+
+        LoginResults results = userService.loginUser();
+
+        // assert results
+    }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/22">
+<h1>Example: Session-scoped Bean Config</h1>
+
+<pre class="sh_xml"><code>&lt;beans ...&gt;
+
+    &lt;bean id="userService" class="com.example.SimpleUserService"
+        c:userPreferences-ref="userPreferences" /&gt;
+
+    &lt;bean id="userPreferences" class="com.example.UserPreferences"
+            c:theme="#{session.getAttribute('theme')}"
+            scope="session"&gt;
+        &lt;aop:scoped-proxy /&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-web-support/slides/23">
+<h1>Example: Session-scoped Bean Test</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
+@WebAppConfiguration
+public class SessionScopedBeanTests {
+
+    @Autowired UserService userService;
+    @Autowired MockHttpSession session;
+
+    @Test
+    public void sessionScope() throws Exception {
+
+        session.setAttribute("theme", "blue");
+
+        Results results = userService.processUserPreferences();
+
+        // assert results
+    }
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-context-initializers/slides/1">
+<h1>Application Context Initializers</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental smaller" ref="tcf-context-initializers/slides/2">
+<h1><code>ApplicationContextInitializer</code></h1>
+
+<ul>
+<li>Introduced in Spring 3.1</li>
+<li>Used for programmatic initialization of a <code>ConfigurableApplicationContext</code></li>
+<li>For example:
+
+<ul>
+<li>to register property sources</li>
+<li>to activate profiles against the <code>Environment</code></li>
+</ul>
+</li>
+<li>Configured in <code>web.xml</code> by specifying <code>contextInitializerClasses</code> via
+
+<ul>
+<li><code>context-param</code> for the <code>ContextLoaderListener</code></li>
+<li><code>init-param</code> for the <code>DispatcherServlet</code></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental smaller" ref="tcf-context-initializers/slides/3">
+<h1>Using Initializers in Tests</h1>
+
+<ul>
+<li>Configured in <code>@ContextConfiguration</code> via the <code>initializers</code> attribute</li>
+<li>Inheritance can be controlled via the <code>inheritInitializers</code> attribute</li>
+<li>An <code>ApplicationContextInitializer</code> may configure the entire context
+
+<ul>
+<li>XML resource locations or annotated classes are no longer required</li>
+</ul>
+</li>
+<li>Initializers are now part of the <em>context cache key</em></li>
+<li>Initializers are <em>ordered</em> based on Spring's <code>Ordered</code> interface or the <code>@Order</code> annotation</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-initializers/slides/4">
+<h1>Example: Single Initializer</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+    locations = "/app-config.xml",
+    initializers = CustomInitializer.class)
+public class ApplicationContextInitializerTests {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-initializers/slides/5">
+<h1>Example: Multiple Initializers</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+    locations = "/app-config.xml",
+    initializers =
+    {PropertySourceInitializer.class, ProfileInitializer.class})
+public class ApplicationContextInitializerTests {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-initializers/slides/6">
+<h1>Example: Merged Initializers</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+    classes = BaseConfig.class,
+    initializers = BaseInitializer.class)
+public class BaseTest {}
+
+
+@ContextConfiguration(
+    classes = ExtendedConfig.class,
+    initializers = ExtendedInitializer.class)
+public class ExtendedTest extends BaseTest {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-initializers/slides/7">
+<h1>Example: Overridden Initializers</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+    classes = BaseConfig.class,
+    initializers = BaseInitializer.class)
+public class BaseTest {}
+
+
+@ContextConfiguration(
+    classes = ExtendedConfig.class,
+    initializers = ExtendedInitializer.class,
+    inheritInitializers = false)
+public class ExtendedTest extends BaseTest {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-initializers/slides/8">
+<h1>Example: Initializer w/o Locations or Classes</h1>
+
+<pre class="sh_java"><code>@ContextConfiguration(initializers = EntireAppInitializer.class)
+public class InitializerWithoutConfigFilesOrClassesTest {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="tcf-context-hierarchies/slides/1">
+<h1>Application Context Hierarchies</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-context-hierarchies/slides/2">
+<ul>
+<li><strong>WARNING</strong></li>
+<li><em>Support for context hierarchies<br/>has <strong>not</strong> yet been implemented.</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-context-hierarchies/slides/3">
+<h1>Status Quo for Tests</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-context-hierarchies/slides/4">
+<ul>
+<li>Currently only flat, non-hierarchical<br/>contexts are supported.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-context-hierarchies/slides/5">
+<ul>
+<li>There is no easy way to create contexts<br/>with parent-child relationships.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-context-hierarchies/slides/6">
+<ul>
+<li>But hierarchies are supported in production.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets center" ref="tcf-context-hierarchies/slides/7">
+<ul>
+<li>So it would be nice to be able to test them. ;)</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-context-hierarchies/slides/8">
+<h1>Context Hierarchy Goals</h1>
+
+<ul>
+<li>Load a test application context with a parent context</li>
+<li>Support common hierarchies
+
+<ul>
+<li>Root WAC &lt;-- Dispatcher WAC</li>
+<li>EAR &lt;-- Root WAC &lt;-- Dispatcher WAC</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="tcf-context-hierarchies/slides/9">
+<h1>Context Hierarchy Proposal</h1>
+
+<ul>
+<li>Introduce <code>@ContextHierarchy</code> that contains nested <code>@ContextConfiguration</code> declarations</li>
+<li>Introduce a <code>name</code> attribute in <code>@ContextConfiguration</code>
+
+<ul>
+<li>for <em>merging</em> or <em>overriding</em> named configuration in the context hierarchy</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-hierarchies/slides/10">
+<h1>Single Test with Context Hierarchy</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+
+@ContextHierarchy({
+    @ContextConfiguration("parent.xml"),
+    @ContextConfiguration("child.xml")
+})
+public class AppCtxHierarchyTests {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-hierarchies/slides/11">
+<h1>Root WAC &amp; Dispatcher WAC</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+
+@WebAppConfiguration
+
+@ContextHierarchy({
+    @ContextConfiguration(
+        name="root",
+        classes = WebAppConfig.class),
+    @ContextConfiguration(
+        name="dispatcher",
+        locations="/spring/dispatcher-config.xml")
+})
+public class ControllerIntegrationTests {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="tcf-context-hierarchies/slides/12">
+<h1>Class &amp; Context Hierarchies</h1>
+
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
+public abstract class AbstractWebTests {}
+
+@ContextHierarchy(@ContextConfiguration("/spring/soap-ws-config.xml")
+public class SoapWebServiceTests extends AbstractWebTests {}
+
+@ContextHierarchy(@ContextConfiguration("/spring/rest-ws-config.xml")
+public class RestWebServiceTests extends AbstractWebTests {}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental" ref="tcf-context-hierarchies/slides/13">
+<h1>Feedback is Welcome</h1>
+
+<ul>
+<li><a href="https://jira.springsource.org/browse/SPR-5613">SPR-5613</a>: context hierarchy support</li>
+<li><a href="https://jira.springsource.org/browse/SPR-9683">SPR-9863</a>: web context hierarchy support</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="intermission/slides">
+<h1>Intermission... ;)</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="spring-mvc-test-framework/slides/1">
+<h1>Spring MVC Test Framework</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/2">
+<h1>Origins of Spring MVC Test</h1>
+
+<ul>
+<li>Based on <a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a> project on Github</li>
+<li>Just added to <code>spring-test</code> module (Spring 3.2 RC1)</li>
+<li>Nearly identical code base</li>
+<li>Github project will continue to support Spring 3.1</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/3">
+<h1>Differences with <a href="github.com/SpringSource/spring-test-mvc">spring-test-mvc</a></h1>
+
+<ul>
+<li>Depends on Spring 3.2 vs. Spring 3.1</li>
+<li>Integrated with <code>@WebAppConfiguration</code></li>
+<li>Provides Servlet 3 async support</li>
+<li>Different packages</li>
+<li>Straight-forward to migrate</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/4">
+<h1>High Level Description</h1>
+
+<ul>
+<li>1st class support for testing Spring MVC apps</li>
+<li>Using a fluent API</li>
+<li>Server-side tests involve the <strong><code>DispatcherServlet</code></strong></li>
+<li>Client-side tests <strong><code>RestTemplate</code></strong>-based</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/5">
+<h1>Built on <code>spring-test</code></h1>
+
+<ul>
+<li><code>TestContext</code> framework for loading Spring config</li>
+<li><code>MockHttpServletRequest/Response</code></li>
+<li><code>MockFilterChain</code></li>
+<li>Servlet container is not used</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none">
+  <div class="content small incremental bullets" ref="spring-mvc-test-framework/slides/6">
+<h1>Extent of Support</h1>
+
+<ul>
+<li>HTTP message conversion fully supported<br> e.g. <code>@RequestBody</code>/<code>@ResponseBody</code></br>
+<li>Most rendering technologies as well<br> JSON, XML, Freemarker/Velocity, Thyme, etc</br>
+<li>No JSP rendering and redirects<br> Assert selected JSP view or redirected URL</br>
+</li>
+
+</li>
+</li>
+</ul></div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="spring-mvc-test-server/slides/1">
+<h1>Server-side<br> Spring MVC Tests</br>
+</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="spring-mvc-test-server/slides/2">
+<h1>Example</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/3">
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration("servlet-context.xml")
+public class SampleTests {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/4">
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration("servlet-context.xml")
+public class SampleTests {
+
+  @Autowired
+  private WebApplicationContext wac;
+
+  private MockMvc mvc;
+
+  @Before
+  public void setup() {
+    this.mvc = webAppContextSetup(this.wac).build();
+  }
+
+
+
+
+
+
+
+
+
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/5">
+<pre class="sh_java"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration("servlet-context.xml")
+public class SampleTests {
+
+  @Autowired
+  private WebApplicationContext wac;
+
+  private MockMvc mvc;
+
+  @Before
+  public void setup() {
+    this.mvc = webAppContextSetup(this.wac).build();
+  }
+
+  @Test
+  public void getFoo() throws Exception {
+    this.mvc.perform(get("/foo").accept("application/json"))
+        .andExpect(status().isOk())
+        .andExpect(content().mimeType("application/json"))
+        .andExpect(jsonPath("$.name").value("Lee"));
+  }
+
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/6">
+<h1>Static Imports</h1>
+
+<ul>
+<li><code>MockMvcBuilders.*</code>, <code>MockMvcRequestBuilders.*</code>, <code>MockMvcResultMatchers.*</code></li>
+<li>Add as <em>"favorite packages"</em> in Eclipse prefs<br> for code completion</br>
+<li>Or simply search <code>"MockMvc*"</code></li>
+</li>
+
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/7">
+<h1>Set-Up Options</h1>
+
+<ul>
+<li>The goal:<br><code>MockMvc</code> instance ready to perform requests</br>
+<li>Prepare <code>DispatcherServlet</code> config</li>
+<li>Specify root of webapp</li>
+<li>Add servlet Filters</li>
+</li>
+
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/8">
+<h1>Option 1: <code>TestContext</code> framework</h1>
+
+<ul>
+<li>Load actual <code>DispatcherServlet</code> config</li>
+<li>Smart caching of <code>WebApplicationContext</code> instances</li>
+<li>Possibly inject controllers with mock services</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/9">
+<h1>Declaring a Mock Service For Injection</h1>
+
+<pre class="sh_xml"><code>
+
+
+&lt;bean class="org.mockito.Mockito" factory-method="mock"&gt;
+    &lt;constructor-arg value="org.example.FooService"/&gt;
+&lt;/bean&gt;</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/10">
+<h1>Option 2: "Standalone"</h1>
+
+<ul>
+<li>Simply register one or more <code>@Controller</code> instances</li>
+<li>Config similar to MVC Java Config</li>
+<li>No Spring context is actually loaded</li>
+<li>"Stub" <code>WebApplicationContext</code> used to configure <code>DispatcherServlet</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/11">
+<h1>"Standalone" Setup Example</h1>
+
+<pre class="sh_java"><code>
+
+standaloneSetup(new PersonController()).build()
+  .mockMvc.perform(post("/persons").param("name", "Joe"))
+    .andExpect(status().isMovedTemporarily())
+    .andExpect(redirectedUrl("/persons/Joe"))
+    .andExpect(model().size(1)) 
+    .andExpect(model().attributeExists("name"));</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/12">
+<h1><code>@WebAppConfiguration</code> vs. "Standalone"</h1>
+
+<ul>
+<li>"Standalone" more targetted<br> one controller at a time, explicit config</br>
+<li><code>@WebAppConfiguration</code> verifies application config</li>
+<li>No right or wrong choice, different test styles</li>
+<li>May also mix and match</li>
+</li>
+
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/13">
+<h1>Performing Requests</h1>
+
+<ul>
+<li>Specify HTTP method and URI at a minimum</li>
+<li>Additional builder-style methods corresponding to <code>MockHttpServletRequest</code> fields</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/14">
+<h1>Request Examples</h1>
+
+<pre class="sh_java"><code>
+
+mockMvc.perform(
+  post("/hotels/{id}?n={n}", 42, "N"));
+
+mockMvc.perform(
+  fileUpload("/doc").file("a1", "ABC".getBytes("UTF-8")));</code></pre>
+</div>
+</div><div class="slide" data-transition="none">
+  <div class="content small bullets incremental" ref="spring-mvc-test-server/slides/15">
+<h1>Specifying Parameters</h1>
+
+<ul>
+<li>Query string in the URI<br> <code>get("/hotels?a=b")</code></br>
+<li>Form params in the request body<br> <code>get("/hotels").body("a=b".getBytes("ISO-8859-1"))</code></br>
+<li>Servlet parameters<br> <code>get("/hotels").param("a", "b")</code></br>
+</li>
+
+</li>
+</li>
+</ul></div>
+</div><div class="slide" data-transition="none">
+  <div class="content small bullets incremental" ref="spring-mvc-test-server/slides/16">
+<h1>Context/Servlet Path + PathInfo</h1>
+
+<ul>
+<li>If you specify full path<br> <code>get("/app/main/hotels/{id}")</code></br>
+<li>Then set paths accordingly<br> <code>get("").contextPath("/app").servletPath("/main")</code></br>
+<li>Or leave out context/servlet path<br> <code>get("/hotels/{id}")</code></br>
+</li>
+
+</li>
+</li>
+</ul></div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/17">
+<h1>Default Request Properties</h1>
+
+<ul>
+<li>Performed requests are often similar</li>
+<li>Same header, parameter, cookie</li>
+<li>Specify default request when setting up <code>MockMvc</code></li>
+<li>Performed requests override defaults!</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/18">
+<h1>Default Request Example</h1>
+
+<pre class="sh_java"><code>
+webAppContextSetup(this.wac).defaultRequest(get("/")
+  .accept(MediaType.APPLICATION_JSON)
+  .param("locale", "en_US"));</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/19">
+<h1>Defining Expectations</h1>
+
+<ul>
+<li>Simply add one or more <code>.andExpect(..)</code></li>
+<li>After the call to <code>perform(..)</code></li>
+<li><code>MockMvcResultMatchers</code> provides many choices</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/20">
+<h1>What Can Be Verified</h1>
+
+<ul>
+<li>Response status, headers, content</li>
+<li>But also Spring MVC specific information</li>
+<li>Flash attrs, handler, model content, etc</li>
+<li>See lots of <a href="https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/standalone/resultmatchers">sample tests</a> for examples</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/21">
+<h1>JSON and XML Content</h1>
+
+<ul>
+<li>JSONPath</li>
+<li>XPath</li>
+<li>XMLUnit</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none">
+  <div class="content small bullets incremental" ref="spring-mvc-test-server/slides/22">
+<h1>In Doubt?</h1>
+
+<ul>
+<li>Print all details<br> <code>mvc.perform("/foo").andDo(print())</code></br>
+<li>Or directly acccess the result<br> <code>MvcResult r = mvc.perform("/foo").andReturn()</code></br>
+</li>
+
+</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/23">
+<h1>Common Expectations</h1>
+
+<ul>
+<li>Tests often have similar expectations</li>
+<li>Same status, headers</li>
+<li>Specify such expectations when setting up <code>MockMvc</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-server/slides/24">
+<h1>Common Expectations Example</h1>
+
+<pre class="sh_java"><code>
+webAppContextSetup(this.wac)
+    .andAlwaysExpect(status.isOk())
+    .alwaysExpect(content().mimeType("application/xml"))
+    .alwaysDo(print())
+    .build();</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/25">
+<h1>Filters</h1>
+
+<ul>
+<li>Filters may be added when setting up <code>MockMvc</code></li>
+<li>Executed as requests get peformed</li>
+<li>Various possible use case</li>
+<li>See <code>Spring Security</code> <a href="https://github.com/SpringSource/spring-framework/blob/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples/context/SpringSecurityTests.java">sample tests</a></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-server/slides/26">
+<h1><a href="https://github.com/rwinch/spring-test-mvc-htmlunit">HtmlUnit Integration</a></h1>
+
+<ul>
+<li>Adapts <code>HtmlUnit</code> request-response to <code>MockHttpServletRequest/Response</code></li>
+<li>Enables use of <code>Selenium</code> and <code>Geb Spock</code> on top</li>
+<li>No running server</li>
+<li>Give it a try, feedback welcome!</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="spring-mvc-test-client/slides/1">
+<h1>Client-side<br> <code>RestTemplate</code> Tests</br>
+</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="spring-mvc-test-client/slides/2">
+<h1>Example</h1>
+
+<pre class="sh_java"><code>
+RestTemplate restTemplate = new RestTemplate();
+
+MockRestServiceServer mockServer = 
+    MockRestServiceServer.createServer(restTemplate);
+
+mockServer.expect(requestTo("/greeting"))
+    .andRespond(withSuccess("Hello world", "text/plain"));
+
+
+// use RestTemplate ...
+
+
+mockServer.verify();</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small incremental bullets" ref="spring-mvc-test-client/slides/3">
+<h1>Static Imports</h1>
+
+<ul>
+<li><code>MockRestRequestMatchers.*</code> and <code>MockRestResponseCreators.*</code></li>
+<li>Add as <em>"favorite packages"</em> in Eclipse prefs<br> for code completion</br>
+<li>Or simply search <code>"MockRest*"</code></li>
+</li>
+
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-client/slides/4">
+<h1><code>RestTemplate</code> Instrumentation</h1>
+
+<ul>
+<li><code>MockRestServiceServer.createServer(restTemplate)</code></li>
+<li>Configures <code>RestTemplate</code> with custom <code>ClientHttpRequestFactory</code></li>
+<li>Can be used further to ...</li>
+<li>Define expected requests and responses</li>
+<li>Verify expectations</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-client/slides/5">
+<h1>Define Expected Requests-Responses</h1>
+
+<ul>
+<li><code>mockServer.expect(..).andExpect(..)</code></li>
+<li>Followed by <code>.andReturn(..)</code></li>
+<li>Set up any number of requests with <code>mockServer.expect(..)</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-client/slides/6">
+<h1>Each Time <code>RestTemplate</code> Is Used</h1>
+
+<ul>
+<li>Request expectations asserted</li>
+<li>Stub response returned</li>
+<li>Exception raised if no more expected requests</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content small bullets incremental" ref="spring-mvc-test-client/slides/7">
+<h1>After <code>RestTemplate</code> Is Used</h1>
+
+<ul>
+<li><code>mockServer.verify(..)</code></li>
+<li>Ensures all expected requests executed</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="end/slides/1">
+<h1>In Closing ...</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="end/slides/2">
+<h1>Presentation Source</h1>
+
+<h2><a href="https://github.com/rstoyanchev/spring-32-test-webapps">https://github.com/rstoyanchev/spring-32-test-webapps</a></h2>
+</div>
+</div><div class="slide" data-transition="none">
+  <div class="content incremental small" ref="end/slides/3">
+<h1>Resources for Spring MVC Test</h1>
+
+<br><br>
+
+
+<ul>
+<li><a href="https://github.com/SpringSource/spring-mvc-showcase/tree/master/src/test/java/org/springframework/samples/mvc">Spring MVC Showcase</a> tests</li>
+<li>Sample <a href="https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/client/samples">client</a> and <a href="https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples">server</a> tests in the Spring Framework</li>
+<li>Reference documentation will be added in 3.2 RC2</li>
+</ul>
+
+</br>
+</br>
+</div>
+</div><div class="slide" data-transition="none"><div class="content incremental small" ref="end/slides/4">
+<h1>Resources for Core Spring</h1>
+
+<ul>
+<li><strong>Spring Framework</strong>:<br/><a href="http://www.springsource.org/spring-framework">www.springsource.org/spring-framework</a></li>
+<li><strong>Reference Manual</strong>: <a href="http://static.springsource.org/spring/docs/3.2.x/spring-framework-reference/html/">Spring 3.2.x</a></li>
+<li><strong>Forums</strong>: <a href="http://forum.springframework.org">forum.springframework.org</a></li>
+<li><strong>JIRA</strong>: <a href="https://jira.springsource.org">jira.springsource.org</a></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content subsection" ref="end/slides/5">
+<h1>Q&amp;A</h1>
+
+<br/>
+
+
+<h2>Sam Brannen</h2>
+
+<h3>Web: <a href="http://www.swiftmind.com">Swiftmind.com</a></h3>
+
+<h3>Twitter: <a href="http://twitter.com/sam_brannen">@sam_brannen</a></h3>
+
+<br/>
+
+
+<h2>Rossen Stoyanchev</h2>
+
+<h3>Web: <a href="http://www.springsource.com">SpringSource.com</a></h3>
+
+<h3>Twitter: <a href="http://twitter.com/rstoya05">@rstoya05</a></h3>
+</div>
+</div></div>
+
+</body>
+</html>
