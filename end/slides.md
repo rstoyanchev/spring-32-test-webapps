@@ -10,7 +10,7 @@
 # Resources for Spring MVC Test
 <br><br>
 * [Spring MVC Showcase](https://github.com/SpringSource/spring-mvc-showcase/tree/master/src/test/java/org/springframework/samples/mvc) tests
-* Sample [client](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/client/samples) and [server](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/mock/servlet/samples) tests in the Spring Framework 
+* Sample [client](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/client/samples) and [server](https://github.com/SpringSource/spring-framework/tree/master/spring-test-mvc/src/test/java/org/springframework/test/web/servlet/samples) tests in the Spring Framework 
 * Reference documentation will be added in 3.2 RC2
 
 !SLIDE incremental small
