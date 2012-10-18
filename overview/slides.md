@@ -31,7 +31,7 @@
 * _New testing features in the Spring Framework_
 * _Spring MVC Test (`spring-test-mvc`)_
 
-!SLIDE subsection incremental small
+!SLIDE subsection incremental smaller
 # Agenda
 * Spring TestContext Framework
 * Web Application Contexts
