@@ -81,7 +81,7 @@
 ![SmartContextLoader-Type-Hierarchy.png](SmartContextLoader-Type-Hierarchy.png)
 
 !SLIDE incremental smaller
-# `WebTestExecutionListener`
+# `ServletTestExecutionListener`
 * Sets up default thread-local state via `RequestContextHolder` before each test method
 * Creates:
   * `MockHttpServletRequest`
