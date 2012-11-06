@@ -62,7 +62,8 @@
 	@WebAppConfiguration("classpath:test-web-resources")
 	
 	// file system resource
-	@ContextConfiguration("file:src/main/webapp/WEB-INF/servlet-config.xml")
+	@ContextConfiguration(
+	    "file:src/main/webapp/WEB-INF/servlet-config.xml")
 	
 	public class WacTests {
 		//...

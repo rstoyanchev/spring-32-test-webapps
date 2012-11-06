@@ -28,7 +28,7 @@
 * Dependency injection of test instances
 * Transactional test management
   * with default rollback semantics
-* `JdbcTestUtils` (-`SimpleJdbcTestUtils`-)
+* `JdbcTestUtils` (<s>`SimpleJdbcTestUtils`</s>)
 
 !SLIDE incremental smaller
 # Spring Test Annotations
@@ -46,7 +46,7 @@
 * Use the `SpringJUnit4ClassRunner` for __JUnit__ 4.5+
 * Instrument test class with `TestContextManager` for __TestNG__
 * Extend one of the base classes
-  * `Abstract(Transactional)[JUnit4|TestNG]SpringContextTests`
+  * `Abstract(Transactional)`<br />`[JUnit4|TestNG]SpringContextTests`
 
 !SLIDE small transition=fade
 # Example: @POJO Test Class
@@ -277,7 +277,7 @@
 * Upgraded to JUnit 4.10<br /> and TestNG 6.5.2
 
 !SLIDE bullets center
-* `spring-test` now depends on `junit:junit-dep`
+* `spring-test` now depends on `junit-dep`
 
 !SLIDE bullets center
 * Now inferring return type of<br />generic factory methods
