@@ -12,13 +12,13 @@
 * Currently only flat, non-hierarchical<br />contexts are supported.
 
 !SLIDE bullets center
-* There is no easy way to create contexts<br />with parent-child relationships.
+* There is no easy way to create contexts with parent-child relationships.
 
 !SLIDE bullets center
-* But hierarchies are supported in production.
+* But hierarchies are supported<br />in production.
 
 !SLIDE bullets center
-* So it would be nice to be able to test them. ;)
+* So it would be nice to be able<br />to test them. ;)
 
 !SLIDE incremental small
 # Context Hierarchy Goals
@@ -66,16 +66,19 @@
 	@@@ java
 	@RunWith(SpringJUnit4ClassRunner.class)
 	@WebAppConfiguration
-	@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
-	public abstract class AbstractWebTests {}
+	@ContextConfiguration(
+	  "file:src/main/webapp/WEB-INF/applicationContext.xml")
+	public abstract class AbstractWebTests{}
 	
-	@ContextHierarchy(@ContextConfiguration("/spring/soap-ws-config.xml")
-	public class SoapWebServiceTests extends AbstractWebTests {}
+	@ContextHierarchy(
+	  @ContextConfiguration("/spring/soap-ws-config.xml")
+	public class SoapWebServiceTests extends AbstractWebTests{}
 	
-	@ContextHierarchy(@ContextConfiguration("/spring/rest-ws-config.xml")
-	public class RestWebServiceTests extends AbstractWebTests {}
+	@ContextHierarchy(
+	  @ContextConfiguration("/spring/rest-ws-config.xml")
+	public class RestWebServiceTests extends AbstractWebTests{}
 
-!SLIDE incremental
+!SLIDE incremental small
 # Feedback is Welcome
 * [SPR-5613](https://jira.springsource.org/browse/SPR-5613): context hierarchy support
 * [SPR-9863](https://jira.springsource.org/browse/SPR-9683): web context hierarchy support

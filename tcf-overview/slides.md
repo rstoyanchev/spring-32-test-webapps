@@ -335,12 +335,12 @@
 	@@@ xml
 	<beans ...>
 	
-		<!-- OrderService is autowired with OrderRepository -->
-		<context:component-scan base-package="com.example"/>
+	  <!-- OrderService is autowired with OrderRepository -->
+	  <context:component-scan base-package="com.example"/>
 	
-		<bean id="orderRepository" class="org.easymock.EasyMock"
-			factory-method="createMock"
-			c:_="com.example.repository.OrderRepository" />
+	  <bean id="orderRepository" class="org.easymock.EasyMock"
+	    factory-method="createMock"
+	    c:_="com.example.repository.OrderRepository" />
 	
 	</beans>
 

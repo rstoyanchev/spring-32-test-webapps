@@ -35,9 +35,11 @@
 	@@@ java
 	@RunWith(SpringJUnit4ClassRunner.class)
 	@ContextConfiguration(
-	    locations = "/app-config.xml",
-	    initializers =
-		{PropertySourceInitializer.class, ProfileInitializer.class})
+	  locations = "/app-config.xml",
+	  initializers = {
+	    PropertySourceInitializer.class,
+	    ProfileInitializer.class
+	  })
 	public class ApplicationContextInitializerTests {}
 
 !SLIDE smaller
@@ -72,7 +74,9 @@
 	public class ExtendedTest extends BaseTest {}
 
 !SLIDE smaller
-# Example: Initializer w/o Locations or Classes
+# Example: Initializer w/o Resources
 	@@@ java
-	@ContextConfiguration(initializers = EntireAppInitializer.class)
+	// does not declare 'locations' or 'classes'
+	@ContextConfiguration(
+	    initializers = EntireAppInitializer.class)
 	public class InitializerWithoutConfigFilesOrClassesTest {}

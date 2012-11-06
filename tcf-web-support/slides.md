@@ -10,7 +10,7 @@
 # Loading a `WebApplicationContext`
 
 !SLIDE bullets center
-* How do you tell the TestContext framework<br> to load a `WebApplicationContext`?
+* How do you tell the TestContext framework to load a `WebApplicationContext`?
 
 !SLIDE bullets center
 * Just annotate your test class with ...
@@ -144,15 +144,16 @@
 	@@@ xml
 	<beans ...>
 	
-		<bean id="userService" class="com.example.SimpleUserService"
-			c:loginAction-ref="loginAction" />
-		
-		<bean id="loginAction" class="com.example.LoginAction"
-		 		c:username="#{request.getParameter('user')}"
-		 		c:password="#{request.getParameter('pswd')}"
-				scope="request">
-			<aop:scoped-proxy />
-		</bean>
+	  <bean id="userService"
+	      class="com.example.SimpleUserService"
+	      c:loginAction-ref="loginAction" />
+	
+	  <bean id="loginAction" class="com.example.LoginAction"
+	      c:username="#{request.getParameter('user')}"
+	      c:password="#{request.getParameter('pswd')}"
+	      scope="request">
+	    <aop:scoped-proxy />
+	  </bean>
 		
 	</beans>
 
@@ -184,15 +185,17 @@
 	@@@ xml
 	<beans ...>
 	
-		<bean id="userService" class="com.example.SimpleUserService"
-			c:userPreferences-ref="userPreferences" />
-		
-		<bean id="userPreferences" class="com.example.UserPreferences"
-				c:theme="#{session.getAttribute('theme')}"
-				scope="session">
-			<aop:scoped-proxy />
-		</bean>
-		
+	  <bean id="userService"
+	      class="com.example.SimpleUserService"
+	      c:userPreferences-ref="userPreferences" />
+	
+	  <bean id="userPreferences"
+	      class="com.example.UserPreferences"
+	      c:theme="#{session.getAttribute('theme')}"
+	      scope="session">
+	    <aop:scoped-proxy />
+	  </bean>
+	
 	</beans>
 
 !SLIDE smaller
@@ -202,18 +205,18 @@
 	@ContextConfiguration
 	@WebAppConfiguration
 	public class SessionScopedBeanTests {
-		
-		@Autowired UserService userService;
-		@Autowired MockHttpSession session;
-		
-		@Test
-		public void sessionScope() throws Exception {
-			
-			session.setAttribute("theme", "blue");
-			
-			Results results = userService.processUserPreferences();
-			
-			// assert results
-		}
+	
+	  @Autowired UserService userService;
+	  @Autowired MockHttpSession session;
+	
+	  @Test
+	  public void sessionScope() throws Exception {
+	
+	    session.setAttribute("theme", "blue");
+	
+	    Results results = userService.processUserPreferences();
+	
+	    // assert results
+	  }
 	}
 
