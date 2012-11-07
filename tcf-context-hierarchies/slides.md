@@ -53,11 +53,11 @@
 	
 	@ContextHierarchy({
 	    @ContextConfiguration(
-			name="root",
+			name = "root",
 			classes = WebAppConfig.class),
 	    @ContextConfiguration(
-			name="dispatcher",
-			locations="/spring/dispatcher-config.xml")
+			name = "dispatcher",
+			locations = "/spring/dispatcher-config.xml")
 	})
 	public class ControllerIntegrationTests {}
 
@@ -71,14 +71,14 @@
 	public abstract class AbstractWebTests{}
 	
 	@ContextHierarchy(
-	  @ContextConfiguration("/spring/soap-ws-config.xml")
+	  @ContextConfiguration("/spring/soap-ws-config.xml"))
 	public class SoapWebServiceTests extends AbstractWebTests{}
 	
 	@ContextHierarchy(
-	  @ContextConfiguration("/spring/rest-ws-config.xml")
+	  @ContextConfiguration("/spring/rest-ws-config.xml"))
 	public class RestWebServiceTests extends AbstractWebTests{}
 
 !SLIDE incremental small
 # Feedback is Welcome
 * [SPR-5613](https://jira.springsource.org/browse/SPR-5613): context hierarchy support
-* [SPR-9863](https://jira.springsource.org/browse/SPR-9683): web context hierarchy support
+* [SPR-9863](https://jira.springsource.org/browse/SPR-9863): web context hierarchy support
